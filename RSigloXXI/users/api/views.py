@@ -19,13 +19,13 @@ class UserApiViewSet(ModelViewSet):
         return super().create(request, *args, **kwargs)
 
     #encriptar la contraseña de los usuarios cuando actualizen sus datos
-    def partial_update(selft, request, *args, **kwargs):
+    def partial_update(self, request, *args, **kwargs):
         password = request.data['password']
         if password:
             request.data['password'] = make_password(password)
         else:
             request.data['password'] = request.user.password
-        return super().update(selft, request, *args, **kwargs)
+        return super().partial_update(request, *args, **kwargs)
 
 #Clase unicamente para pedir informacion del usuario
 class UserView(APIView):
