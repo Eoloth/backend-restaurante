@@ -9,6 +9,10 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
+import sys
+import oracledb
+oracledb.version = "8.3.0"
+sys.modules["cx_Oracle"] = oracledb
 
 import os
 import datetime
@@ -86,10 +90,20 @@ WSGI_APPLICATION = 'RSigloXXI.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
+DATABASES ={
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.oracle',
+        'USER':'admin', 
+        'NAME':'restaurante_low', 
+        'PASSWORD':'Restaurante.siglo.21',
+        'OPTIONS':{
+            'wallet_password':'Restaurante.siglo.21',
+            'host':'adb.sa-santiago-1.oraclecloud.com',
+            'port':1522,
+            'service_name':'g45dbbf5e92d22b_restaurante_low.adb.oraclecloud.com',
+            'wallet_location':'C:\instantclient_21_6\\network\\admin',
+            'config_dir':'C:\instantclient_21_6\\network\\admin',
+        }
     }
 }
 
