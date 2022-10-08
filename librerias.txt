@@ -1,6 +1,7 @@
 pip install pandas
 pip install xlrd2
-
+pip install openpyxl
+pip instal ffspec
 
 #importacion libreria requeriments.txt y sobre escritura forzada
 pip3 install pipreqs
