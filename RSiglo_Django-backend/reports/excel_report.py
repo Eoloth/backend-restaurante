@@ -1,6 +1,9 @@
+import datetime
 import os
 import pandas as pd
 from pandas import ExcelWriter
+import pytz
+import xlwt
 
 
 ruta = "C:/"
@@ -11,7 +14,10 @@ datos = pd.DataFrame({'id':[1,2,3,4],
 
 datos = datos[['id','nombre','edad']]
 
-writer = ExcelWriter(ruta + '/datos.xlsx')
+hoy = str(datetime.datetime.now(pytz.timezone('America/Santiago')).strftime('%Y-%m-%d %H.%M.%S'))
+hoy = hoy.replace(" ", "_")
+
+writer = ExcelWriter(ruta + "Reporte - " + hoy + ".xlsx")
 
 datos.to_excel(writer,'reporte',index=False)
 
