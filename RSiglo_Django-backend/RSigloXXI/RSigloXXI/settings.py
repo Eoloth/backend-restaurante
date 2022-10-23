@@ -103,8 +103,8 @@ DATABASES = {
                 'host':'adb.sa-santiago-1.oraclecloud.com',
                 'port':1522,
                 'service_name':'g45dbbf5e92d22b_restaurante_low.adb.oraclecloud.com',
-                'wallet_location': 'C:\instantclient_21_6\\network\\admin',
-                'config_dir':'C:\instantclient_21_6\\network\\admin',
+                'wallet_location': os.path.join(BASE_DIR, 'instantclient_21_6\\network\\admin'),
+                'config_dir': os.path.join(BASE_DIR, 'instantclient_21_6\\network\\admin'),
             }
     }
 }
